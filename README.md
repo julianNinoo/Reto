@@ -45,3 +45,8 @@ Listar funciones	\df
 Listar Vistas	\dv
 Ver código SLQ de la función	\df+ __function
 Pretty-format	\x
+
+
+Para terraform se uso este video: https://www.youtube.com/watch?v=O05KkBlAuFg 
+https://cloud.google.com/community/tutorials/getting-started-on-gcp-with-terraform guia de GCP + terraform 
+
