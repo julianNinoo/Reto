@@ -379,3 +379,32 @@ git config --global user.email "julian.nino@correo.icesi.edu.co"
 git push origin master
 git commit -m "Terraform"
 git push origin master
+git add .
+git commit -m "Terraform"
+git push origin master
+git pull
+ls
+git pull
+git push origin master
+git pull --rebase
+ls
+git pull
+git branch
+git push origin master
+git pull master
+git pull 
+git pull remote master
+git pull origin master
+ls
+git pull origin master --allow-unrelated-histories
+ls
+git pull origin master
+ls -la
+cat .bash
+cat .bashrc 
+git pull origin master
+ls
+ls -la
+mv .bashrc .bahrcgoogle
+git pull origin master
+git push origin master
