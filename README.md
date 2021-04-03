@@ -50,3 +50,12 @@ Pretty-format	\x
 Para terraform se uso este video: https://www.youtube.com/watch?v=O05KkBlAuFg 
 https://cloud.google.com/community/tutorials/getting-started-on-gcp-with-terraform guia de GCP + terraform 
 
+Problemas con terraform: 
+rror: Error loading zone 'us-central1-a': googleapi: Error 403: Permission denied on resource project {{plasma-set-309404}}., forbi
+dden
+  on main.tf line 7, in resource "google_compute_instance" "vm_instance":
+   7:  resource "google_compute_instance" "vm_instance" {
+   
+   se solucionó creando una cuenta de servicio con diferentes permisos en IAM
+   Ojo tambien en el main.tf , el proyecto es con ""
+   
