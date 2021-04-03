@@ -1,0 +1,15 @@
+  hosts: addi3
+  become: true
+  tasks:
+        - name: instalar nginx
+          apt:
+                 name:
+                       - nginx
+        - name: iniciar nginx
+          systemd:
+                 name: nginx
+                 state: started
+        - name: habilitar nginx
+          systemd:
+                 name: nginx
+                 enabled: yes
