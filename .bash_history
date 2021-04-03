@@ -373,3 +373,9 @@ git remote add https://github.com/julianNinoo/RetoAddi.git
 git init
 git remote add https://github.com/julianNinoo/RetoAddi.git
 git remote add origin https://github.com/julianNinoo/RetoAddi.git
+git add .
+git commit -m "Terraform"
+git config --global user.email "julian.nino@correo.icesi.edu.co"
+git push origin master
+git commit -m "Terraform"
+git push origin master
