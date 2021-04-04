@@ -34,7 +34,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-//	  sh 'cd /home/juliannino/'
+	  sh 'cd /home/juliannino/'
 	  sh 'docker build -t julian:1.0.1 .'
         }
       }
