@@ -1,0 +1,26 @@
+- name: services
+  hosts: addi3
+  become: true
+  tasks:
+        - name: Install aptitude using apt
+          apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+        - name: Install required system packages
+          apt: name={{ item }} state=latest update_cache=yes
+          loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'pyth
+on3-setuptools']
+        - name: Add Docker GPG apt Key
+          apt_key:
+                url: https://download.docker.com/linux/ubuntu/gpg
+                state: present
+        - name: Add Docker Repository
+          apt_repository:
+                repo: deb https://download.docker.com/linux/ubuntu bionic test
+                state: present
+        - name: update
+          command: sudo apt update
+        - name: Url
+          command: curl -O https://download.docker.com/linux/debian/dists/buster/pool/stable/amd64/containerd.io_1.4.3-1_amd64.deb
+        - name: Url 2
+          command: sudo apt install ./containerd.io_1.4.3-1_amd64.deb
+        - name: Update apt and install docker-ce
+          apt: update_cache=yes name=docker-ce state=latest
