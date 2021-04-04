@@ -1,7 +1,27 @@
+
 - name: services
   hosts: addi3
   become: true
   tasks:
+         #INSTALL NGINX
+        - name: start nginx
+          systemd:
+                 name: nginx
+                 state: started
+        - name: enable nginx
+          systemd:
+                 name: nginx
+                 enabled: yes
+          #INSTALL MONITORING
+        - name: Config manager monitoring
+          command: curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh
+        - name: add monitoring
+          command: sudo bash add-monitoring-agent-repo.sh
+        - name: update
+          command: sudo apt-get update
+        - name: instalar stackdriver
+          command: sudo apt-get install -y stackdriver-agent
+          #INSTALL DOCKER
         - name: Install aptitude using apt
           apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
         - name: Install required system packages
