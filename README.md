@@ -32,7 +32,7 @@ todo lo que dice Client como metodo declarativo , se puso así: models.Client , 
 
 Se escogió Google Cloud Platform para aprovechar los 300 créditos que dan para usar sus recursos.
 
--A continuación se muestra su uso:
+- A continuación se muestra su uso:
 
 ![](Imagenes/google.png)
 
@@ -72,7 +72,7 @@ Problemas obtenidos con terraform:
 
 ## Paso 5: Dockerizar la aplicación
 
-- Se toma la decisión de dockerizar la aplicación, esto se hace para que sea más facil su traslado en caso de hacerlo.
+- Se toma la decisión de dockerizar para automatizar el despliegue de la aplicación
 - Como la base de datos se maneja local entonces es necesario hacer el comando docker run de la siguiente manera:
                             
                               docker run -d  --network=host -p 5000:5000 julian:1.0.1
@@ -111,10 +111,11 @@ Problemas obtenidos con terraform:
 
 ### Bibliografía 
 
-- https://www.youtube.com/watch?v=O05KkBlAuFg  (Terraform) 
-- https://cloud.google.com/community/tutorials/getting-started-on-gcp-with-terraform  (guia de GCP + terraform )
+- https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/getting_started  (Terraform) 
 - https://docs.ansible.com/ansible/latest/index.html (Ansible)
-- https://faun.pub/docker-build-push-with-declarative-pipeline-in-jenkins-2f12c2e43807 (Jenkins)
+- https://www.jenkins.io/doc/ (Jenkins)
+- https://docs.docker.com/get-started/ (Docker)
+- https://cloud.google.com/monitoring?hl=es (Monitoreo de Google Cloud Platform) 
 
 
 
