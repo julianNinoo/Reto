@@ -3,7 +3,13 @@
   hosts: addi3
   become: true
   tasks:
-         #INSTALL NGINX
+        
+        #INSTALL NGINX
+        - name: instalar nginx
+          apt:
+                 name:
+                       - nginx
+         
         - name: start nginx
           systemd:
                  name: nginx
