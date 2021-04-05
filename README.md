@@ -1,7 +1,7 @@
 # RetoAddi
-RetoAddi
 
-- Para ver el nombre http://julian.quantil.co/getn/hola
+- La app se encuentra funcionando en http://julian.quantil.co
+- Para consultar un nombre http://julian.quantil.co/getn/hola
 - Para ver el id http://julian.quantil.co/get/2
 - Para ver todo http://julian.quantil.co/getall
 - Para añadir http://julian.quantil.co/add?name=alejandrasanchez&money=010
@@ -20,7 +20,7 @@ todo lo que dice Client como metodo declarativo , se puso así: models.Client , 
 - El anterior cambio se hizo porque estaba generando un error en el cual no encontraba el Client.
 - Se generaba el error: sqlalchemy.exc.InvalidRequestError: Table 'clients' is already defined for this MetaData instance.  Specify 'extend_existing=True' to redefine options and columns on an existing Table object.
 - Lo anterior se solucionó con: __table_args__ = {'extend_existing': True} justo debajo de  __tablename__
-- 
+
 ### Postdata
 - Resumen de instrucciones de postgres:
 - Cerrar conexión	\q
@@ -40,7 +40,59 @@ Problemas obtenidos con terraform:
 - Error: Error loading zone 'us-central1-a': googleapi: Error 403: Permission denied on resource project ., forbidden
 - Solución: Se solucionó creando una cuenta de servicio con diferentes permisos en IAM, recordar qué cuando se define el proyecto en el main.ts se ponen las comillas dobles ""
 
+- A continuación se muestra el despliegue con terraform:
 
+![](Imagenes/terraformfuncionando.png)
+
+- Cuando se creen los recursos es necesario añadir la siguiente  regla en el firewall de  la red para poder ingresar a las máquinas virtuales por este protocolo.
+
+![](Imagenes/Reglamaquina.png)
+
+
+## Paso 3: Hacer el manejo de la configuración con Ansible
+
+- Con ansible se instalan todos los servicios necesarios para que la app funcione, en este caso se instaló: Docker, nginx, Jenkins, Postgres y  herramienta de monitoreo.
+- Para que ansible no tenga problemas , es necesario pasarle la llave ssh en el comando ansible-playbook, de la siguiente manera:
+
+                                        ansible-playbook nginx.yml  --private-key "/home/julian_nino/llave.key"
+                                        
+- En el archivo hosts que está en la carpeta de ansible es necesario añadirle un interprete, en este caso python.
+- A continuación se muestra la instalación de servicios con Ansible
+
+![](Imagenes/ansible.png)
+
+
+## Paso 4: Dockerizar la aplicación
+
+- Se toma la decisión de dockerizar la aplicación, esto se hace para que sea más facil su traslado en caso de hacerlo.
+- Como la base de datos se maneja local entonces es necesario hacer el comando docker run de la siguiente manera:
+                            
+                              docker run -d  --network=host -p 5000:5000 julian:1.0.1
+
+- A continuación se muestra el contenedor en Up 
+
+![](Imagenes/docker.png)
+
+
+## Paso 5: Realizar CI/CD
+
+- Se toma la decisión de hacer la integración continua con Jenkins, el archivo Jenkinsfile se puede observar en este repositorio.
+
+- A continuación se muestra la configuración de jenkins:
+
+![](Imagenes/jenkinsconfiguracion.png)
+
+- A continuación se muestra jenkins en funcionamiento con sus stages.
+
+![](Imagenes/jenkins.png)
+
+- Es importante recordar que por la opción settings-Webhook de este repositorio se debe conectar con Jenkins, poniendo su url. 
+
+## Paso 6 : Monitoreo con Stackdriver
+
+- A continuación se muestra el monitoreo con Stackdriver, la cual es la herramienta de monitoreo de Google Cloud Platform.
+
+![](Imagenes/monitoreo.png)
 
 
 
