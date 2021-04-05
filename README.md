@@ -108,6 +108,11 @@ Problemas obtenidos con terraform:
 
 ![](Imagenes/monitoreo.png)
 
+## Cambios Futuros:
+
+- Se puede manejar el  downtime de la aplicación con un cluster de kubernetes  ya que este es un orquestador de contenedores.
+- Se le pueden pasar pruebas unitarias en Jenkins.
+
 
 
 ### Bibliografía 
