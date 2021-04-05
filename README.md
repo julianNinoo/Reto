@@ -28,8 +28,16 @@ todo lo que dice Client como metodo declarativo , se puso así: models.Client , 
 - Listar Bases de datos	\l
 - Ver Definiciones	\d __table__
 
+## Paso 2: Escoger el Cloud Provider
 
-## Paso 2: Desplegar la infraestructura con Terraform
+Se escogió Google Cloud Platform para aprovechar los 300 créditos que dan para usar sus recursos.
+
+-A continuación se muestra su uso:
+
+![](Imagenes/google.png)
+
+
+## Paso 3: Desplegar la infraestructura con Terraform
 
 - En la carpeta terraform se encuentra un archivo llamado main.tf en el cual se crea la maquina virtual y la VPC que se usará para la aplicación.
 - El archivo main.tf se corrió desde el cloudshell de google cloud, por esta razón es importante crear una cuenta de servicio y darle permisos de IAM a esa cuenta de servicio.
@@ -49,7 +57,7 @@ Problemas obtenidos con terraform:
 ![](Imagenes/Reglamaquina.png)
 
 
-## Paso 3: Hacer el manejo de la configuración con Ansible
+## Paso 4: Hacer el manejo de la configuración con Ansible
 
 - Con ansible se instalan todos los servicios necesarios para que la app funcione, en este caso se instaló: Docker, nginx, Jenkins, Postgres y  herramienta de monitoreo.
 - Para que ansible no tenga problemas , es necesario pasarle la llave ssh en el comando ansible-playbook, de la siguiente manera:
@@ -62,7 +70,7 @@ Problemas obtenidos con terraform:
 ![](Imagenes/ansible.png)
 
 
-## Paso 4: Dockerizar la aplicación
+## Paso 5: Dockerizar la aplicación
 
 - Se toma la decisión de dockerizar la aplicación, esto se hace para que sea más facil su traslado en caso de hacerlo.
 - Como la base de datos se maneja local entonces es necesario hacer el comando docker run de la siguiente manera:
@@ -74,7 +82,7 @@ Problemas obtenidos con terraform:
 ![](Imagenes/docker.png)
 
 
-## Paso 5: Realizar CI/CD
+## Paso 6: Realizar CI/CD
 
 - Se toma la decisión de hacer la integración continua con Jenkins, el archivo Jenkinsfile se puede observar en este repositorio.
 
@@ -88,7 +96,12 @@ Problemas obtenidos con terraform:
 
 - Es importante recordar que por la opción settings-Webhook de este repositorio se debe conectar con Jenkins, poniendo su url. 
 
-## Paso 6 : Monitoreo con Stackdriver
+## Paso 7: Monitoreo con Stackdriver
+
+- Se realiza la instalación de Stackdriver, la cual es la herramienta de monitoreo de Google Cloud Platform
+
+![](Imagenes/instalacionmonitoreo.png)
+
 
 - A continuación se muestra el monitoreo con Stackdriver, la cual es la herramienta de monitoreo de Google Cloud Platform.
 
@@ -98,8 +111,11 @@ Problemas obtenidos con terraform:
 
 ### Bibliografía 
 
-https://www.youtube.com/watch?v=O05KkBlAuFg  (Terraform) 
-https://cloud.google.com/community/tutorials/getting-started-on-gcp-with-terraform  (guia de GCP + terraform )
+- https://www.youtube.com/watch?v=O05KkBlAuFg  (Terraform) 
+- https://cloud.google.com/community/tutorials/getting-started-on-gcp-with-terraform  (guia de GCP + terraform )
+- https://docs.ansible.com/ansible/latest/index.html (Ansible)
+- https://faun.pub/docker-build-push-with-declarative-pipeline-in-jenkins-2f12c2e43807 (Jenkins)
+
 
 
 
