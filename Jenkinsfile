@@ -43,7 +43,7 @@ pipeline {
 
     stage('Deploy images') {
       steps{
-        sh 'docker run -d -p 5000:5000 julian:1.0.1'
+        sh 'docker run -d --network=host -p 5000:5000 julian:1.0.1'
       }
     }
   }
