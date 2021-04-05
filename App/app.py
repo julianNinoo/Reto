@@ -13,7 +13,7 @@ import models
 #Index
 @app.route("/")
 def index():
-    return "This is the app indexjuliannino"
+    return "This is the app index soy juliannino"
 
 #Add client and money
 @app.route("/add")
