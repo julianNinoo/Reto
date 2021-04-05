@@ -73,6 +73,7 @@ Problemas obtenidos con terraform:
 ## Paso 5: Dockerizar la aplicación
 
 - Se toma la decisión de dockerizar para automatizar el despliegue de la aplicación
+- Todos los paquetes que se necesitan instalar para el funcionamiento de la aplicación se añadieron a requirements.txt
 - Como la base de datos se maneja local entonces es necesario hacer el comando docker run de la siguiente manera:
                             
                               docker run -d  --network=host -p 5000:5000 julian:1.0.1
